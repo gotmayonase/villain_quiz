@@ -1,0 +1,18 @@
+<h1>Answer the questions!</h1>
+
+<%= simple_form_for @quiz_response do |f| %>
+  <ol>
+  <% @questions.each do |question| %>
+    <li>
+      <%= question.body %>
+      <ol>
+        <% question.responses.each do |r| %>
+          <label><%= r.body %></label>
+          <input type="radio" name="questions[<%= question.id %>][responses][id]" value="<%= r.id %>"  />
+        <% end %>
+      </ol>
+    </li>
+  <% end %>
+  </ol>
+  <%= f.submit %>
+<% end %>
